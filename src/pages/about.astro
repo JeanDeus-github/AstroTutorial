@@ -1,4 +1,5 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/main.css';
@@ -28,7 +29,7 @@ const textCase = "uppercase";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
+    <style is:global define:vars={{skillColor, fontWeight, textCase}}>
     h1 {
         color: purple;
         font-size: 4rem;
@@ -40,9 +41,8 @@ const textCase = "uppercase";
     }
     </style>
     </head>
+    <BaseLayout pageTitle={pageTitle}>
     <body>
-        <Header />
-        <h1>{pageTitle}</h1>
         <p>Here are a few facts about me:</p>
         <ul>
             <li>My name is {identity.firstName}.</li>
@@ -61,5 +61,5 @@ const textCase = "uppercase";
 
         {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
     </body>
-    <Footer />
+    </BaseLayout>
 </html>>
